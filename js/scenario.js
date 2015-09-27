@@ -114,6 +114,7 @@ scenario.factory('highlightManager', function($log) {
         greenState = "highlight",
         redState = "warn",
 
+    // I need to refactor this so that I can accommodate different decoration states.
     manager = {
         decoratorList: [greenState, redState],
         add: function (id, changeState) {
@@ -132,7 +133,9 @@ scenario.factory('highlightManager', function($log) {
             }
         },
         check: function (id) {
-            angular.forEach
+            angular.forEach(ids, function(idObject){
+                $log.log(idObject.id);
+            });
             return (ids.indexOf(id) != -1);
         }
     };
