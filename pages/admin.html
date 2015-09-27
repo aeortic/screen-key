@@ -1,0 +1,27 @@
+<div id="admin">
+    <p>{{message}}</p>
+
+    <label>First Name: <input type="text" name="input" title="first name" ng-model="userData.firstName"></label><br>
+    <label>Last Name: <input type="text" name="input" title="last name" ng-model="userData.lastName"></label><br>
+    <button ng-click="createActivity('top')"><i class="fa fa-plus-circle"></i> Create New Activity</button>
+    <div class="activity" ng-repeat="item in userData.activities">
+        Activity with work order # {{item.workOrder}}<span class="btn" id="delete" ng-click="delete(item.workOrder)"><i class="fa fa-remove"></i> Delete</span><br>
+        <label>Status: <input type="text" name="input" title="status" ng-model="item.status"></label><br>
+        <label>Activity Type: <input type="text" name="input" title="activity type" ng-model="item.activityType"></label><br>
+        <label>Work Order: <input type="text" name="input" title="work order" ng-model="item.workOrder"></label><br>
+        <label>First Name: <input type="text" name="input" title="first name" ng-model="item.firstName"></label><br>
+        <label>Last Name: <input type="text" name="input" title="last name" ng-model="item.lastName"></label><br>
+        <label>Address: <input type="text" name="input" title="address" ng-model="item.address"></label><br>
+        <label>City: <input type="text" name="input" title="city" ng-model="item.city"></label><br>
+        <label>Zip: <input type="text" name="input" title="zip" ng-model="item.zip"></label><br>
+        <label>Phone: <input type="text" name="input" title="phone" ng-model="item.phone"></label><br>
+        <label>Time Slot: <input type="text" name="input" title="time slot" ng-model="item.timeSlot"></label><br>
+        <label>Start Time: <input type="text" name="input" title="start time" ng-model="item.start"></label><br>
+        <label>End Time: <input type="text" name="input" title="end time" ng-model="item.end"></label><br>
+        <label>Problem Code: <input type="text" name="input" title="problem code" ng-model="item.problemCode"></label><br>
+        <label>Work Order Class: <input type="text" name="input" title="work order class" ng-model="item.workOrderClass"></label><br>
+        <label>Work Order Type: <input type="text" name="input" title="work order type" ng-model="item.workOrderType"></label><br>
+    </div>
+    <button ng-click="createActivity('bottom')" ng-show="userData.activities.length > 2"><i class="fa fa-plus-circle"></i>Create New Activity</button>
+
+</div>

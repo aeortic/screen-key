@@ -1,0 +1,18 @@
+<p>Scenario: {{scenarioData.name}}</p>
+<ul class="fa-ul scenarioList">
+        <li ng-controller="stepCtrl" class="{{checkIndex($index)}}" ng-repeat="step in scenarioData.steps">
+            <p><i class="fa fa-chevron-right"></i> name: {{step.name}}</p>
+            commands:
+            <ul>
+                <li ng-repeat="command in step.commands">
+                    <p ng-repeat="(name, content) in command">{{name}}: {{content}}
+                </li>
+            </ul>
+            <span ng-show="step.validations.length">validation:</span>
+            <ul>
+                <li ng-repeat="validation in step.validations">
+                    <p ng-repeat="(name, content) in validation">{{name}}: {{content}}
+                </li>
+            </ul>
+        </li>
+</ul>

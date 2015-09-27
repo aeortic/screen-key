@@ -1,0 +1,313 @@
+#interactive {
+    width: 100%;
+    height: 100%;
+}
+
+#main, #scenarioView {
+    display: inline-block;
+}
+
+#scenarioView {
+    vertical-align: top;
+    margin-right: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-right: 1px solid #dcdcdc;
+    width: 30%;
+    min-width: 300px;
+}
+
+#scenarioView li{
+    padding: 5px;
+}
+
+.scenarioList i {
+    display: none;
+}
+
+.scenarioList .activeStep i{
+    display: inline-block;
+}
+
+.activeStep {
+    background-color: #f8f8f8;
+    width: 100%;
+    border-radius: 6px;
+}
+
+
+
+/*.activeStep p:before  {*/
+    /*content: '\f054';*/
+    /*font-family: 'FontAwesome';*/
+    /*font-size: 170%;*/
+    /*float: left;*/
+    /*margin-left: -3.3em;*/
+    /*margin-top: -2.8em;*/
+    /*color: #c1c1c1;*/
+/*}*/
+
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+
+.screen span {
+    font-weight: bold;
+    font-size:115%;
+}
+
+.screen {
+    position:relative;
+    display:inline-block;
+    text-align:center;
+}
+.button {
+    position: absolute;
+    background-color: transparent;
+    color: transparent;
+    border: none;
+}
+
+#login .button {
+    bottom:15px;
+    right:60px;
+    width:195px;
+    height:50px;
+}
+
+.detail {
+    bottom:20px;
+    left:10px;
+    width:690px;
+    height:40px;
+}
+
+#home img{
+    position:absolute;
+    clip: rect(0px,710px,98px,0px);
+}
+
+#pendingActivities img {
+    position:absolute;
+    clip: rect(0px,900px,98px,0px);
+}
+
+#home #pendingActivities {
+    bottom: 202px;
+}
+
+#home #telephonyUnwiredInstalls {
+    bottom: 160px;
+}
+
+#home #telephonyTelemarketing {
+    bottom: 120px;
+}
+
+#home #fullName, #pendingActivities #fullName {
+    position: absolute;
+    top: 11px;
+    left: 55px;
+    background-color: #85a328;
+    color: white;
+    opacity: 1;
+    font-weight: bold;
+    font-size:138%;
+    width: 400px;
+    text-align: left;
+    text-shadow: 0.2px 0.5px #000000;
+}
+
+#pendingActivities #fullName {
+    left: 70px;
+}
+
+#home #fullName #lastName, #pendingActivities #fullName #lastName {
+    text-transform: uppercase;
+}
+
+
+.home {
+    top: 10px;
+    left: 10px;
+    height: 30px;
+}
+
+
+
+#activityDetails .button {
+    bottom: 33px;
+    height: 30px;
+}
+
+#activityDetails #startActivity {
+    top: 45px;
+    left: 116px;
+    width: 122px;
+    height: 45px;
+}
+
+#activityDetails #house {
+    left: 145px;
+}
+
+#activityDetails #createSRO {
+    left: 215px;
+}
+
+#activityDetails .dynamicDetailBoxes {
+    position: absolute;
+    top: 87.5px;
+    left: 225px;
+    opacity: 1;
+}
+
+#activityDetails .detailBox {
+    background-color: #ffffff;
+    margin-top: 19.5px;
+    text-align: left;
+}
+
+#activityDetails .detailBox span{
+    display: block;
+    height: 25.5px;
+    width: 300px;
+}
+
+.submit {
+    height: 30px;
+    width: 65px;
+    position: absolute;
+    bottom: 25px;
+    left: 13px;
+}
+
+.dismiss {
+    height: 30px;
+    width: 70px;
+    bottom: 25px;
+    right: 23px;
+}
+
+#house .submit, #house .dismiss {
+    bottom: 15px;
+}
+
+#admin .activity {
+    padding-left: 15px;
+    margin: 30px;
+    background-color: rgba(133, 163, 40, 0.05);
+    display: block;
+    width: 400px;
+    border-radius:8px;
+    border: 1px solid #b1abad;
+}
+
+#admin .activity label {
+    width: 350px;
+}
+
+#admin .activity input {
+    float: right;
+}
+
+#admin .activity #delete {
+    float: right;
+}
+
+
+.statusList {
+    position: absolute;
+    top: 98px;
+    opacity: 1;
+    background-color: #e9e9e9;
+    border: 1px solid black;
+    border-top: none;
+}
+
+.statusList a {
+    color: #343434;
+}
+
+.statusList #address {
+    text-transform: uppercase;
+}
+
+.statusList .activityList {
+    text-align: left;
+    margin-left: 11px;
+    margin-bottom: 9px;
+    background-color: white;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    border: 1px solid #b1abad;
+}
+
+.statusList button {
+    height: 41px;
+    text-align: left;
+    border: none;
+    box-shadow: none;
+    padding-left: 0px;
+    background-color: transparent;
+}
+
+#home .statusList button {
+    width: 687px;
+}
+
+#pendingActivities .statusList button {
+    width: 885px;
+}
+
+.statusList .notHeader button {
+    border-top: 1px solid #dbd5d7;
+}
+
+.statusList .header button {
+
+    background-repeat: no-repeat;
+    background-position: 11px 11px;
+}
+
+.statusList .Pending .header  button {
+    background-image: url('/css/images/yellowActivityCategory.png');
+}
+
+.statusList .Started .header  button {
+    background-image: url('/css/images/greenActivityCategory.png');
+}
+
+.statusList .Closed .header  button {
+    background-image: url('/css/images/blueActivityCategory.png');
+}
+
+
+.statusList .header .spacer {
+    padding-left: 42px;
+
+}
+
+.statusList .notHeader .spacer {
+    padding-left: 23px;
+
+}
+
+.highlight {
+    border: 3px solid lawngreen;
+}
+
+.warn {
+    border: 3px solid red;
+}
+
+#playBtn {
+    cursor: pointer;
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+    font-size: 150%;
+}
+
+#playBtn i{
+
+}
+

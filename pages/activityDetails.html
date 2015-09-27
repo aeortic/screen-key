@@ -1,0 +1,34 @@
+
+<p>Screen: {{message}}</p>
+<div id="activityDetails" class="screen">
+    <img src="images/SmartMobilityUG_Page_10_Image_0001.jpg" />
+    <a ui-sref="home"><button title="home" class="button home">home</button></a>
+    <!--<a ui-sref="startActivity"><button title="start activity" class="button" id="startActivity">start activity</button></a>-->
+    <div class="dynamicDetailBoxes">
+        <div class="detailBox" id="detailBox1">
+            <span id="status" title="status">{{activity.status}}</span>
+            <span id="activityType" title="activity type">{{activity.activityType}}</span>
+            <span id="workOrder" title="work order">{{activity.workOrder}}</span>
+            <span id="accountNumber" title="account number">{{activity.accountNumber}}</span>
+        </div>
+        <div class="detailBox" id="detailBox2">
+            <span id="fullName" title="full name">{{activity.fullName}}</span>
+            <span id="address" title="address">{{activity.address}}</span>
+            <span id="city" title="city">{{activity.city}}</span>
+            <span id="zip" title="zip">{{activity.zip}}</span>
+            <span id="phone" title="phone">{{activity.phone}}</span>
+        </div>
+        <div class="detailBox" id="detailBox3">
+            <span id="timeSlot" title="time slot">{{activity.timeSlot}}</span>
+            <span id="time" title="time">{{activity.time}}</span>
+        </div>
+        <div class="detailBox" id="detailBox4">
+            <span id="problemCode" title="problem code">{{activity.problemCode}}</span>
+            <span id="workOrderType" title="work order type">{{activity.workOrderType}}</span>
+            <span id="workOrderClass" title="work order class">{{activity.workOrderClass}}</span>
+        </div>
+    </div>
+    <!--<a ui-sref=".additionalInfo"><button title="additional info" class="button detail" id="additionalInfo">aditional info detail</button></a>-->
+    <a ui-sref="house"><button title="house" class="button" id="house">house</button></a>
+    <a ui-sref="createSRO"><button title="create SRO" class="button" id="createSRO">create SRO</button></a>
+</div>

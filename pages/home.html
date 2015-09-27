@@ -1,0 +1,15 @@
+<p>Screen: {{message}}</p>
+<div id="home" class="screen">
+
+    <img src="images/SmartMobilityUG_Page_08_Image_0001.jpg" />
+
+    <div id="fullName">
+        <span id="lastName">{{userData.lastName}}</span><span>&#44;&#32;</span><span id="firstName">{{userData.firstName}}</span>
+    </div>
+    <div ng-controller="statusesCtrl" class="statusList">
+        <div ng-repeat="status in statusArray" ng-include="'pages/partials/activityList.html'" onload="setNext(status)"></div>
+    </div>
+    <!--<a ui-sref="pendingActivities"><button title="pending activities" class="button detail" id="pendingActivities">pending activities</button></a>-->
+    <!--<a ui-sref="activityDetails"><button title="activity detail" class="button detail" ng-click="showActivity('137165179')" id="telephonyUnwiredInstalls">unwired detail</button></a>-->
+    <!--<a ui-sref="activityDetails"><button title="activity detail" class="button detail" ng-click="showActivity('137165180')"id="telephonyTelemarketing">telemarketing detail</button></a>-->
+</div>

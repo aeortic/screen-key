@@ -1,0 +1,14 @@
+<div class="activityList {{status.headerLabel}}" ng-controller="activityStatusListCtrl" ng-show="filteredList.length">
+    <div class="header" ng-show="headerVisible">
+        <!--<a ui-sref="pendingActivities">-->
+            <button class="spacer" title="activity header">
+            <span>{{status.headerLabel}} ({{filteredList.length}})</span>
+        </button>
+        <!--</a>-->
+    </div>
+    <div class="activity {{isHeader}}" ng-repeat="item in filteredList" ng-show="activityVisible">
+        <a ui-sref="activityDetails"><button class="spacer" title="work order #{{item.workOrder}}" ng-click="showActivity(item.workOrder)">
+            <span>{{item.activityType}} - </span><span id="address">{{item.address}}</span><span> - {{item.zip}}</span>
+        </button></a>
+    </div>
+</div>

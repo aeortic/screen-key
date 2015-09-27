@@ -1,0 +1,30 @@
+{
+  "name": "initial",
+  "steps": [
+    {
+      "name": "",
+      "commands": [
+        {
+          "type": "decorate",
+          "id": "loginBtn"
+        }
+      ],
+      "validations": [
+        {
+          "id": "loginBtn",
+          "value": "loginComplete",
+          "message": "You must click the 'Login' button to continue."
+        }
+      ]
+    },
+    {
+      "name": "",
+      "commands": [
+        {
+          "type": "mollify",
+          "id": "loginBtn"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+<p>Screen: {{message}}</p>
+<div id="pendingActivities" class="screen">
+    <img src="images/SmartMobilityUG_Page_07_Image_0002.jpg" />
+    <div id="fullName">
+        <span id="lastName">{{userData.lastName}}</span><span>&#44;&#32;</span><span id="firstName">{{userData.firstName}}</span>
+    </div>
+    <div class="statusList">
+        <div ng-include="'pages/partials/activityList.html'"></div>
+    </div>
+    <a ui-sref="home"><button title="home" class="button home">home</button></a>
+    <!--<a ui-sref="activityDetails"><button title="activity detail" class="button detail" ng-click="showActivity('137165183')" id="hsd">hsd</button></a>-->
+    <!--<a ui-sref="activityDetails"><button title="activity detail" class="button detail" ng-click="showActivity('137165184')" id="multiTypeSeasonal">multiTypeSeasonal</button></a>-->
+</div>
