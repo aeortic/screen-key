@@ -23,7 +23,9 @@ scenario.controller('scenarioCtrl', ['$scope', '$http', '$log', 'scenarioData', 
         });
 
     // I get a code smell from this listener being in the scenarioCtrl, but I haven't yet decided on a better
-    // place for it.
+    // place for it. Another weird thing enabled by this code block are multiple validation checks, due to both
+    // 'playBtn' and 'validationFail' messages being handled in the highlight directive. I feel there must be a more
+    // efficient way of doing this.
     $scope.$on('playBtn', function() {
         if (!validate.checkScope($scope))
         {
@@ -110,7 +112,7 @@ scenario.factory('commander', ['$log', 'scenarioData', 'highlightManager', funct
  */
 scenario.factory('highlightManager', function($log) {
 
-    var ids = [],
+    var ids = {},
         greenState = "highlight",
         redState = "warn",
 
@@ -118,38 +120,41 @@ scenario.factory('highlightManager', function($log) {
     manager = {
         decoratorList: [greenState, redState],
         add: function (id, changeState) {
+            // we will assume the green state if none is explicitly defined.
+            changeState = changeState?changeState:greenState;
             // check to see if the id is on the list, and add it if not.
-            var idObject = {};
-            if (!this.check(id)) {
-                // the id does not exist yet.
-                ids.push({id:id});
-            }
+
+            ids[id] = {state: changeState};
+
+        },
+        fail: function(id) {
+            this.add(id, redState);
         },
         remove: function (id) {
             // check to see if the id is on the list, and remove it if so.
-            var index = ids.indexOf(id);
-            if (index != -1) {
-                ids.splice(index,1);
-            }
+           delete ids[id];
         },
+        // This needs to return the decorator state that has been stored for the given id.
         check: function (id) {
-            angular.forEach(ids, function(idObject){
-                $log.log(idObject.id);
-            });
-            return (ids.indexOf(id) != -1);
+
+            if (ids[id] != undefined) {
+                return ids[id].state;
+            }
+
         }
     };
 
     return manager;
 });
 
-scenario.factory('validate', ['scenarioData', 'commander', 'dispatch', function(data, commander, dispatch) {
+scenario.factory('validate', ['scenarioData', 'commander', 'dispatch', 'highlightManager', function(data, commander, dispatch, manager) {
     return {
         checkScope: function(scope)
         {
             var allGood = true;
             angular.forEach(data.get().validations, function (validation) {
                 if (validation.value != undefined && scope[validation.id] != validation.value) {
+                    manager.fail(validation.id);
                     allGood = false;
                 }
             });
@@ -169,17 +174,22 @@ scenario.factory('validate', ['scenarioData', 'commander', 'dispatch', function(
             if (stepValue == undefined || stepValue == scope[name]) {
                 return true;
             } else {
+                manager.fail(name);
                 return false;
             }
         },
-        pass: function() { commander.run(); },
-        fail: function() { dispatch('validationFail') }
+        pass: function() {
+            commander.run();
+        },
+        fail: function() {
+            dispatch('validationFail')
+        }
 
     }
 
 }]);
 
-scenario.factory("setTrackingBehavior", ['$log', 'dispatch', 'validate', function($log, dispatch, validate){
+scenario.factory("setTrackingBehavior", ['$log', 'dispatch', 'validate', 'highlightManager', function($log, dispatch, validate, manager){
     return function(scope, element, name, message) {
         var type = element[0].nodeName;
 
@@ -217,10 +227,11 @@ scenario.directive("highlight", ['$log', 'highlightManager', 'setTrackingBehavio
      var decorator;
     var checkID = function(id, element) {
         decorator = manager.check(id);
+        $log.log(decorator);
         if (decorator != undefined) {
             element.addClass(decorator);
         } else {
-            andgular.forEach(manager.decoratorList, function(value) {
+            angular.forEach(manager.decoratorList, function(value) {
                 element.removeClass(value);
             });
 
@@ -234,8 +245,7 @@ scenario.directive("highlight", ['$log', 'highlightManager', 'setTrackingBehavio
             // here we run some code to determine if the indicated id needs to be highlighted...
             checkID(id, element);
 
-            // I need to make sure that this isn't firing for elements that are not on the screen any longer.
-            // Because that would be rather bad.
+            // the name of this event is not in keeping with it's function. This should probably be refactored.
             scope.$on('playBtn', function() {
                 checkID(id, element);
             });
